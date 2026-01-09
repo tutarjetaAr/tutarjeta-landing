@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TuTarjeta.ar | Invitaciones Digitales</title>
+    <link rel="stylesheet" href="css/estilo1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <div class="top-banner">
+        <p>¿Buscas algo exclusivo? Hacemos <a href="#precios">diseños 100% personalizados</a> con cotización aparte.</p>
+    </div>
+
+    <header class="hero-intro">
+        <div class="hero-content">
+            <img src="img/sin-fondo-claro.png" alt="TuTarjeta.ar" class="hero-logo">
+            <h1 class="hero-phrase">La invitación perfecta <br> para tu momento único</h1>
+            <a href="#modelos" class="btn-hero">Ver Diseños</a>
+        </div>
+    </header>
+
+    <nav class="sticky-nav" id="navbar">
+        <div class="nav-container">
+            <a href="#modelos">Modelos</a>
+            <div class="nav-logo-container">
+                <img src="img/sin-fondo-claro.png" alt="TuTarjeta" class="nav-logo">
+            </div>
+            <a href="#precios">Precios</a>
+        </div>
+    </nav>
+
+    <main>
+        <main>
+    <section id="modelos" class="section-padding">
+        <div class="container">
+            <h2>Nuestros Diseños Disponibles</h2>
+            <p style="margin-bottom: 30px; color: var(--text-light);">Seleccioná una categoría y luego hacé clic en un modelo para probarlo en vivo.</p>
+
+            <div class="category-tabs">
+                <button class="active">XV Años</button>
+                <button>Bodas</button>
+                <button>Infantiles</button>
+            </div>
+
+            <div class="models-grid">
+                <div class="model-card" onclick="cargarDemo('xv-mellis')">
+                    <img src="img/thumb-mellis.jpg" alt="XV Mellis">
+                    <div class="model-info">
+                        <h3>XV Mellis</h3>
+                        <span><i class="bi bi-play-circle-fill"></i> Probar Demo</span>
+                    </div>
+                </div>
+
+                <div class="model-card inactive" style="opacity: 0.6; cursor: default;">
+                   <div style="height: 200px; background: #eee; display: flex; align-items: center; justify-content: center; color: #999;">Próximamente</div>
+                    <div class="model-info">
+                        <h3>Boda Clásica</h3>
+                        <span>Próximamente</span>
+                    </div>
+                </div>
+                 <div class="model-card inactive" style="opacity: 0.6; cursor: default;">
+                   <div style="height: 200px; background: #eee; display: flex; align-items: center; justify-content: center; color: #999;">Próximamente</div>
+                    <div class="model-info">
+                        <h3>Superhéroes Infantiles</h3>
+                        <span>Próximamente</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="live-demo" class="demo-section" style="display: none;">
+        <div class="container">
+            <h2 id="demo-title">Probando Modelo...</h2> <p>Tocá los botones para ver qué incluye cada plan</p>
+
+            <div class="plan-controls">
+                <button class="btn-plan" onclick="cambiarPlan('estandar')">Estándar</button>
+                <button class="btn-plan" onclick="cambiarPlan('intermedio')">Intermedio</button>
+                <button class="btn-plan active" onclick="cambiarPlan('premium')">Premium</button>
+            </div>
+
+            <div class="phone-mockup">
+                <div class="screen" id="pantalla-demo" data-plan="premium">
+                    
+                    <div id="demo-xv-mellis" class="demo-content">
+                         <div style="padding:50px; text-align:center;">(Aquí va el contenido de Mellis)</div>
+                    </div>
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="precios" class="pricing-section">
+        <div class="container">
+            <h2>Planes Claros</h2>
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <h3>Estándar</h3>
+                    <div class="precio-box"><span class="precio-final">$30.000</span></div>
+                    <ul><li>Invitación 1 pantalla</li><li>Ubicación GPS</li><li>Confirmación WhatsApp</li></ul>
+                </div>
+                 <div class="price-card popular">
+                     <div class="etiqueta-pop">POPULAR</div>
+                    <h3>Intermedio</h3>
+                    <div class="precio-box"><span class="precio-final">$42.000</span></div>
+                    <ul><li>Todo lo anterior</li><li>+ Cuenta Regresiva</li><li>+ Save the Date</li></ul>
+                </div>
+                 <div class="price-card">
+                    <h3>Premium</h3>
+                    <div class="precio-box"><span class="precio-final">$54.000</span></div>
+                    <ul><li>Experiencia Completa</li><li>+ Galería, Música, Sheets</li></ul>
+                </div>
+
+                <div class="price-card personalized">
+                    <h3>💎 Personalizado</h3>
+                    <div class="precio-box">
+                        <span class="precio-final" style="font-size: 1.5rem;">Cotización Aparte</span>
+                    </div>
+                    <ul>
+                        <li>Diseño 100% a medida</li>
+                        <li>Funcionalidades específicas</li>
+                        <li>Asesoramiento dedicado</li>
+                    </ul>
+                    <a href="https://wa.me/549XXXX" class="btn-hero" style="padding: 10px 20px; font-size: 0.9rem;">Consultar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="delivery-section">
+       </section>
+</main>
+
+        <section id="live-demo" class="demo-section">
+            <div class="container">
+                <h2>Probá el diseño en vivo</h2>
+                <p>Tocá los botones para ver qué incluye cada plan</p>
+
+                <div class="plan-controls">
+                    <button class="btn-plan" onclick="cambiarPlan('estandar')">Estándar</button>
+                    <button class="btn-plan" onclick="cambiarPlan('intermedio')">Intermedio</button>
+                    <button class="btn-plan active" onclick="cambiarPlan('premium')">Premium</button>
+                </div>
+
+                <div class="phone-mockup">
+                    <div class="screen" id="pantalla-demo" data-plan="premium">
+                        
+                        <div id="demo-xv-mellis" class="demo-content">
+                            <header class="portada">
+                                <img src="img/portada.png" alt="Portada XV Mellis">
+                            </header>
+
+                            <div class="container-tarjeta">
+                                <section class="seccion frase">
+                                    <p>Hay momentos en la vida que son especiales por sí solos, pero compartirlos con las personas que más queremos los hace inolvidables.</p>
+                                </section>
+
+                                <section class="seccion">
+                                    <p>¡TE ESPERAMOS!</p>
+                                    <i class="bi bi-heart-fill corazon"></i>
+                                </section>
+
+                                <section class="seccion solo-intermedio solo-premium">
+                                    <p class="falta-poco">¡FALTA POCO!</p>
+                                    <div class="contador">
+                                        <div class="bloque"><span id="dias">00</span><p>Días</p></div>
+                                        <div class="bloque"><span id="horas">00</span><p>Hs</p></div>
+                                        <div class="bloque"><span id="minutos">00</span><p>Min</p></div>
+                                        <div class="bloque"><span id="segundos">00</span><p>Seg</p></div>
+                                    </div>
+                                </section>
+                                
+                                <section class="seccion">
+                                    <h1 class="titulo-principal">MIS 15 AÑOS</h1>
+                                    <h2 class="nombres">Mellis</h2>
+                                </section>
+
+                                <section class="seccion fecha-lugar">
+                                    <div class="columna">
+                                        <h3>FIESTA</h3>
+                                        <p class="dia">Sábado 27 de Diciembre</p>
+                                        <p class="hora">22:00 hs</p>
+                                        <p class="lugar">Salón "Los Álamos"</p>
+                                        <a href="https://maps.app.goo.gl/..." target="_blank" class="boton">VER MAPA</a>
+                                    </div>
+                                </section>
+
+                                <section class="seccion galeria solo-premium">
+                                    <h3>GALERÍA DE FOTOS</h3>
+                                    <div class="fotos">
+                                        <img src="img/foto1.jpg" alt="Foto 1">
+                                        <img src="img/foto2.jpg" alt="Foto 2">
+                                    </div>
+                                </section>
+
+                                <section class="seccion confirmacion">
+                                    <h3>CONFIRMACIÓN DE ASISTENCIA</h3>
+                                    <p>Por favor, confirmanos tu presencia antes del 15 de Diciembre.</p>
+                                    <a href="https://wa.me/..." target="_blank" class="boton">CONFIRMAR POR WHATSAPP</a>
+                                </section>
+
+                                <section class="seccion regalos">
+                                    <i class="bi bi-gift-fill icono-regalo"></i>
+                                    <h3>REGALOS</h3>
+                                    <p>Si deseás hacernos un regalo, podés colaborar con nuestra urna el día de la fiesta.</p>
+                                    <p>¡Gracias!</p>
+                                </section>
+                            </div>
+
+                            <footer>
+                                <p>¡Gracias por ser parte de este momento tan especial!</p>
+                                <img src="img/logo-footer.png" alt="Logo" class="logo-footer">
+                            </footer>
+
+                            <div class="music-container solo-premium">
+                                <button id="play-pause" class="music-btn"><i class="bi bi-play-fill"></i></button>
+                                <audio id="musica" loop>
+                                    <source src="audio/musica.mp3" type="audio/mpeg">
+                                </audio>
+                            </div>
+                        </div>
+                        <div id="demo-boda-ejemplo" class="demo-content" style="display:none;">
+                            <div style="padding: 20px; text-align: center;">Ejemplo Boda</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="precios" class="pricing-section">
+           <div class="container">
+                <h2>Precios Claros</h2>
+                <div class="pricing-grid">
+                    <div class="price-card">
+                        <h3>Estándar</h3>
+                        <div class="precio-box">
+                            <span class="precio-tachado">$31.000</span>
+                            <span class="precio-final">$30.000</span>
+                        </div>
+                        <ul>
+                            <li>Invitación 1 pantalla</li>
+                            <li>Ubicación GPS</li>
+                            <li>Confirmación WhatsApp</li>
+                        </ul>
+                    </div>
+                    <div class="price-card popular">
+                        <div class="etiqueta-pop">POPULAR</div>
+                        <h3>Intermedio</h3>
+                        <div class="precio-box">
+                            <span class="precio-tachado">$43.000</span>
+                            <span class="precio-final">$42.000</span>
+                        </div>
+                        <ul>
+                            <li>Todo lo anterior</li>
+                            <li><strong>+ Cuenta Regresiva</strong></li>
+                            <li><strong>+ Save the Date</strong></li>
+                        </ul>
+                    </div>
+                    <div class="price-card">
+                        <h3>Premium</h3>
+                        <div class="precio-box">
+                            <span class="precio-tachado">$55.000</span>
+                            <span class="precio-final">$54.000</span>
+                        </div>
+                        <ul>
+                            <li>Experiencia Completa</li>
+                            <li><strong>+ Galería de Fotos</strong></li>
+                            <li><strong>+ Música de Fondo</strong></li>
+                            <li><strong>+ RSVP Google Sheets</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="delivery-section">
+            <div class="container">
+                <div class="delivery-box normal">
+                    <h4>🚚 Entrega Normal</h4>
+                    <p>Incluida en el precio</p>
+                    <span>3-5 días hábiles</span>
+                </div>
+                <div class="delivery-box flash">
+                    <h4>⚡ Entrega Flash 24hs</h4>
+                    <p>+20% extra</p>
+                    <span>Prioridad máxima</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-flex">
+            <div class="footer-brand">
+                <img src="img/sin-fondo-claro.png" alt="TuTarjeta" style="height: 40px;">
+                <p>Invitaciones digitales que conectan.</p>
+            </div>
+            <div class="footer-contact">
+                <a href="https://instagram.com/tutarjeta.ar" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="https://wa.me/549XXXX" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            </div>
+        </div>
+        <div class="copyright">© 2026 TuTarjeta.ar</div>
+    </footer>
+
+    <a href="https://wa.me/549XXXXXX" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
