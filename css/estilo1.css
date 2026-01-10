@@ -1,213 +1,229 @@
+/* --- VARIABLES GLOBALES --- */
 :root {
-    --main: #6a6682;       /* Tu violeta principal */
+    --main: #6a6682;          /* Violeta Principal */
     --main-dark: #555169;
-    --accent: #2DD4BF;     /* Turquesa para botones y detalles */
+    --main-black: #222222;    /* Para Top Banner */
+    --accent: #2DD4BF;        /* Turquesa */
     --accent-light: #F0FDFA;
     --white: #ffffff;
     --text-dark: #333333;
-    --text-light: #555555;
-    --shadow-soft: rgba(0,0,0,0.1);
-    --shadow-strong: rgba(0,0,0,0.2);
+    --text-light: #666666;
+    --shadow: 0 4px 15px rgba(0,0,0,0.1);
     --whatsapp-color: #25D366;
-    --urgent-color: #ff9800;
-    --bg-overlay: rgba(0,0,0,0.7);
-    --border-light: #eee;
 }
 
+/* RESET */
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
-h1, h2, h3 { font-family: 'Montserrat', sans-serif; }
+h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif;}
+ul { list-style: none; }
+a { text-decoration: none; }
+img { max-width: 100%; display: block; }
 html { scroll-behavior: smooth; }
 
-/* --- BARRA SUPERIOR (Top Banner) --- */
+body {
+    background-color: #6a6682 !important;
+    background-image: url("https://www.transparenttextures.com/patterns/60-lines.png") !important;
+}
+
+/* --- 1. TOP BANNER --- */
 .top-banner {
-    background-color: var(--main-dark);
+    background-color: var(--main-black);
     color: var(--white);
     text-align: center;
     padding: 12px 20px;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 500;
-    /* Opcional: si el nav sticky tapa mucho, quitar esto al bajar */
 }
-.top-banner a { color: var(--accent); text-decoration: none; font-weight: 700; }
+.top-banner a { color: var(--accent); font-weight: 700; }
 .top-banner a:hover { text-decoration: underline; }
 
-/* --- 1. HERO INTRO (Modificado con textura y padding) --- */
-.hero-intro {
-    /* 1. El gradiente de base */
-    background: linear-gradient(to bottom, var(--main) 20%, var(--white) 100%);
+/* --- 2. HERO INTRO (FONDO MEJORADO) --- */
+/* CLASE UTILITARIA PARA FONDO VIOLETA CON TEXTURA */
+/* Úsala en el Hero, Footer o cualquier sección oscura */
+.bg-textured {
+    background-color: var(--main); /* 1. Color base violeta */
     
-    /* 2. LA TEXTURA (REEMPLAZA LA RUTA POR TU IMAGEN) */
-    /* Si usas transparenttextures, descarga el PNG y ponlo en tu carpeta img */
-    background-image: url('../img/fondo-textura.png'); 
+    /* 2. Capas de imagen (El navegador las apila: la primera es la de más arriba) */
+    background-image: 
+        /* Capa Superior: Gradiente que va de TRANSPARENTE a BLANCO al final (el desvanecimiento) */
+        linear-gradient(to bottom, rgba(255,255,255,0) 70%, var(--white) 100%),
+        
+        /* Capa Inferior: La textura */
+        url('../img/textura.png'); /* <--- ASEGURATE QUE ESTA RUTA SEA CORRECTA */
+
+    /* 3. Mezcla: Esto hace que la textura se "fusione" con el color violeta de fondo */
+    background-blend-mode: normal, overlay; 
     
-    /* Esto ayuda a que la textura se mezcle con el color */
-    background-blend-mode: soft-light; 
-    
-    /* 3. Ajuste de Padding */
-    padding: 60px 20px 120px 20px; /* Arriba reducido, Abajo aumentado */
-    
-    /* Resto igual */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: var(--white);
-    min-height: 90vh; /* Altura mínima */
+    background-size: cover;
+    background-position: center;
 }
 
-/* Ajuste específico para PC */
+/* --- HERO INTRO CORREGIDO --- */
+.hero-intro {
+    /* 1. COLOR BASE (El violeta) */
+    background-color: var(--main) !important;
+
+    /* 2. IMÁGENES DE FONDO (El orden es CLAVE: la primera va ARRIBA de todo) */
+    background-image: 
+        /* CAPA SUPERIOR: El degradado que se funde a blanco al final */
+        linear-gradient(to bottom, rgba(255,255,255,0) 50%, var(--white) 100%),
+        
+        /* CAPA INFERIOR: La textura (Pon aquí la URL que te funcionó en el body) */
+        url('../img/textura.png') !important; 
+
+    /* 3. MODOS DE MEZCLA */
+    /* 'normal' para el degradado (para que tape lo de abajo al final) */
+    /* 'soft-light' u 'overlay' para que la textura se mezcle con el violeta */
+    background-blend-mode: normal, soft-light;
+
+    /* 4. TAMAÑO Y REPETICIÓN */
+    /* El degradado cubre todo, la textura se repite como patrón */
+    background-size: cover, auto;
+    background-repeat: no-repeat, repeat;
+    background-position: center top;
+
+    /* 5. ESPACIADO (Para dar lugar al difuminado abajo) */
+    padding: 20px 20px 400px 20px; 
+    
+    /* Configuración Flex (Centrado) */
+    min-height: 90vh;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;
+    text-align: center; 
+    color: var(--white);
+    position: relative; /* Por seguridad */
+}
+
+/* RESPONSIVE PARA PC */
 @media (min-width: 768px) {
     .hero-intro {
-        padding-top: 40px;     /* Menos padding arriba en PC */
-        padding-bottom: 180px; /* Mucho más padding abajo en PC */
+        /* En PC el difuminado puede ser más largo */
+        background-image: 
+            linear-gradient(to bottom, rgba(255,255,255,0) 40%, var(--white) 100%),
+            url('../img/textura.png') !important;
+        padding-bottom: 450px; 
     }
 }
 
-.hero-logo { width: 180px; margin-bottom: 20px; animation: flotar 3s infinite ease-in-out; }
-.hero-phrase { font-size: 1.8rem; margin-bottom: 30px; line-height: 1.4; }
+/* APLICAMOS TAMBIÉN AL FOOTER (Opcional si quieres textura ahí) */
+footer {
+    background-color: var(--main-dark);
+    background-image: url('../img/textura.png') !important;
+     background-blend-mode: overlay; 
+    color: var(--white); 
+    padding: 40px 20px; 
+}
+
+.hero-logo { width: 180px; margin: 0 auto 20px auto; animation: flotar 3s infinite ease-in-out; }
+.hero-phrase { font-size: 1.8rem; margin-bottom: 30px; text-shadow: 0 2px 10px rgba(0,0,0,0.2); }
 .btn-hero { 
     background: var(--accent); color: var(--text-dark); padding: 15px 35px; 
-    border-radius: 50px; text-decoration: none; font-weight: bold; 
-    box-shadow: 0 4px 15px var(--shadow-strong); transition: 0.3s;
+    border-radius: 50px; font-weight: bold; box-shadow: var(--shadow); transition: 0.3s; 
 }
-.btn-hero:hover { transform: scale(1.05); background: var(--white); }
+.btn-hero:hover { background: var(--white); transform: scale(1.05); }
+
 @keyframes flotar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
-/* --- 2. NAVBAR STICKY (Color corregido) --- */
+/* --- 3. NAV STICKY --- */
 .sticky-nav {
-    position: fixed;
-    top: -80px;
-    left: 0;
-    width: 100%;
-    /* Fondo VIOLETA principal */
-    background: var(--main); 
-    box-shadow: 0 2px 10px var(--shadow-soft);
-    z-index: 1000;
-    transition: top 0.4s ease;
-    padding: 10px 0;
+    position: fixed; top: -80px; left: 0; width: 100%;
+    background: var(--main); box-shadow: var(--shadow);
+    z-index: 1000; transition: top 0.4s ease; padding: 10px 0;
 }
 .sticky-nav.visible { top: 0; }
-.nav-container { 
-    display: flex; justify-content: center; align-items: center; gap: 30px; 
-    max-width: 1000px; margin: 0 auto;
-}
-/* Enlaces blancos para contrastar con el fondo violeta */
-.nav-container a { 
-    text-decoration: none; color: var(--white); font-weight: 600; font-size: 1rem; 
-}
+.nav-list { display: flex; justify-content: center; align-items: center; gap: 30px; }
+.nav-list a { color: var(--white); font-weight: 600; }
 .nav-logo { height: 35px; }
 
-/* --- 3. SECCIONES GENERALES --- */
+/* --- 4. MODELOS & GRID --- */
 .section-padding { padding: 80px 20px; text-align: center; background: var(--white); }
-h2 { color: var(--main); margin-bottom: 30px; }
+.section-header p { margin-bottom: 30px; color: var(--text-light); }
 
-/* --- 4. MODELOS (Grid y Miniaturas) --- */
-.category-tabs { margin-bottom: 30px; }
+.category-tabs { margin-bottom: 40px; }
 .category-tabs button {
-    background: none; border: 1px solid var(--main); color: var(--main);
-    padding: 8px 20px; border-radius: 20px; margin: 5px; cursor: pointer;
+    background: transparent; border: 1px solid var(--main); color: var(--main);
+    padding: 8px 20px; border-radius: 20px; margin: 0 5px; cursor: pointer; transition: 0.3s;
 }
-.category-tabs button.active { background: var(--main); color: var(--white); }
+.category-tabs button:hover, .category-tabs button.active { background: var(--main); color: var(--white); }
 
 .models-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 20px;
-    max-width: 900px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px; max-width: 1000px; margin: 0 auto;
 }
 .model-card {
-    border-radius: 15px; overflow: hidden; position: relative; cursor: pointer;
-    box-shadow: 0 4px 10px var(--shadow-soft); transition: 0.3s;
+    border-radius: 15px; overflow: hidden; box-shadow: var(--shadow); 
+    cursor: pointer; transition: 0.3s; position: relative; background: #fff;
 }
 .model-card:hover { transform: translateY(-5px); }
-.model-card img { width: 100%; height: 200px; object-fit: cover; }
-.model-info {
-    position: absolute; bottom: 0; width: 100%; background: var(--bg-overlay);
-    color: var(--white); padding: 10px;
-}
+.model-card img { height: 220px; width: 100%; object-fit: cover; }
 
-/* --- 5. DEMO INTERACTIVO --- */
+/* Placeholders */
+.placeholder-img { height: 220px; background: #eee; display: flex; align-items: center; justify-content: center; color: #999; }
+.model-card.inactive { cursor: default; opacity: 0.7; }
+
+.model-info { padding: 15px; background: rgba(0,0,0,0.85); position: absolute; bottom: 0; width: 100%; color: white; display: flex; justify-content: space-between; align-items: center; }
+.btn-text { background: none; border: none; color: var(--accent); font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 5px; }
+
+/* --- 5. DEMO VIVO --- */
 .demo-section { background: var(--accent-light); padding: 60px 20px; text-align: center; }
 .phone-mockup {
-    width: 300px; height: 600px; background: #222; border-radius: 35px;
+    width: 320px; height: 650px; background: #111; border-radius: 40px;
     margin: 30px auto; border: 8px solid #333; overflow: hidden; position: relative;
-    box-shadow: 0 20px 50px var(--shadow-strong);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
 }
-.screen { width: 100%; height: 100%; background: var(--white); overflow-y: auto; text-align: left; }
+iframe { width: 100%; height: 100%; border: none; background: #fff; }
 
-.plan-controls { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; }
-.btn-plan { 
-    border: 1px solid var(--main); background: transparent; color: var(--main); 
-    padding: 5px 15px; border-radius: 15px; cursor: pointer; 
-}
-.btn-plan.active { background: var(--main); color: var(--white); }
+.plan-controls { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+.btn-plan { border: 1px solid var(--main); background: transparent; color: var(--main); padding: 8px 20px; border-radius: 20px; cursor: pointer; transition: 0.3s; }
+.btn-plan.active, .btn-plan:hover { background: var(--main); color: var(--white); }
 
-/* LÓGICA DEL TOGGLE (Igual que antes) */
-[data-plan="estandar"] .solo-intermedio, 
-[data-plan="estandar"] .solo-premium { display: none !important; }
-[data-plan="intermedio"] .solo-premium { display: none !important; }
+/* --- 6. PRECIOS --- */
+.pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 1100px; margin: 40px auto; }
+.price-card { border: 1px solid #eee; border-radius: 15px; padding: 30px; background: var(--white); transition: 0.3s; position: relative; }
+.price-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); border-color: var(--accent); }
+.price-card.popular { border: 2px solid var(--accent); background: #fafafa; }
+.etiqueta-pop { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--accent); color: var(--main-black); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
 
-/* --- ESTILOS INTERNOS DE LA TARJETA (Para que se vea bien en el demo) --- */
-/* (Copia aquí los estilos esenciales de tu archivo style.css de XV Mellis
-   para que la tarjeta se vea correctamente dentro del celular.
-   Asegúrate de usar las variables de color también aquí si es posible) */
-.container-tarjeta { padding: 20px; text-align: center; color: var(--main); }
-.portada img { width: 100%; }
-.titulo-principal { font-size: 1.8rem; margin-top: 20px; }
-.boton { display: inline-block; background: var(--main); color: var(--white); padding: 10px 20px; border-radius: 25px; text-decoration: none; margin-top: 10px; }
-.contador { display: flex; justify-content: center; gap: 10px; margin: 20px 0; }
-.bloque { background: var(--main); color: var(--white); padding: 10px; border-radius: 5px; min-width: 60px; }
-.fotos img { width: 100px; height: 100px; object-fit: cover; margin: 5px; border-radius: 10px; }
-/* ... agrega el resto de estilos de tu tarjeta ... */
+/* Tarjeta Personalizada */
+.price-card.personalized { background: var(--main); color: var(--white); border: none; }
+.price-card.personalized h3, .price-card.personalized .precio-final { color: var(--white); }
+.price-card.personalized li { color: rgba(255,255,255,0.9); }
+.price-card.personalized li::before { content: "💎"; margin-right: 5px; color: var(--white); }
+.btn-consultar { display: inline-block; margin-top: 15px; background: var(--white); color: var(--main); padding: 10px 20px; border-radius: 20px; font-weight: bold; transition: 0.3s; }
+.btn-consultar:hover { background: var(--accent); color: var(--main-black); }
 
+.precio-final { font-size: 2rem; font-weight: 800; display: block; margin: 15px 0; color: var(--main); }
+.price-card.personalized .precio-final.custom-price { font-size: 1.6rem; }
+.price-card ul li { margin-bottom: 10px; color: var(--text-light); text-align: left; }
+.price-card ul li::before { content: "✓"; color: var(--accent); margin-right: 5px; font-weight: bold; }
 
-/* --- 6. PRECIOS & DELIVERY --- */
+/* --- 7. ENTREGAS & FOOTER --- */
+.delivery-section { padding: 40px 20px; background: var(--accent-light); text-align: center; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+.delivery-box { background: var(--white); padding: 20px; border-radius: 10px; width: 300px; box-shadow: var(--shadow); }
+.delivery-box.flash { border: 2px solid #ef4444; }
+.delivery-box.flash h4 { color: #ef4444; }
 
-.pricing-section { background: var(--white); }
-.pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1000px; margin: 40px auto; }
-.price-card { border: 1px solid var(--border-light); border-radius: 15px; padding: 30px; text-align: center; transition: 0.3s; }
-.price-card.popular { border: 2px solid var(--accent); position: relative; background: #fafafa; }
-.etiqueta-pop { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: var(--accent); color: var(--white); padding: 4px 12px; border-radius: 10px; font-size: 0.8rem; }
-.precio-final { font-size: 2rem; color: var(--main); font-weight: 800; display: block; }
-.precio-tachado { text-decoration: line-through; color: #aaa; font-size: 0.9rem; }
-.price-card ul { list-style: none; margin-top: 20px; text-align: left; padding-left: 10px; }
-.price-card li { margin-bottom: 8px; color: var(--text-light); }
-.price-card li::before { content: "✓"; color: var(--accent); margin-right: 5px; font-weight: bold; }
+footer { background: var(--main-dark); color: var(--white); padding: 40px 20px; }
+.footer-content { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+.footer-logo { height: 40px; filter: brightness(100); }
+.footer-social { display: flex; gap: 15px; }
+.btn-social { color: var(--white); border: 1px solid rgba(255,255,255,0.3); padding: 8px 15px; border-radius: 20px; display: flex; align-items: center; gap: 8px; transition: 0.3s; }
+.btn-social:hover { background: var(--white); color: var(--main); }
 
-.delivery-section { padding: 40px 20px; background: var(--accent-light); text-align: center; }
-.delivery-box { display: inline-block; background: var(--white); padding: 20px; border-radius: 10px; width: 300px; margin: 10px; }
-.delivery-box.flash { border: 2px solid var(--urgent-color); }
-
-/* Estilo especial para la card Personalizada */
-.price-card.personalized {
-    background: var(--main); /* Fondo oscuro para destacar */
-    color: var(--white);
-    border: none;
-}
-.price-card.personalized h3,
-.price-card.personalized .precio-final,
-.price-card.personalized li,
-.price-card.personalized li::before {
-    color: var(--white); /* Todo el texto en blanco */
-}
-
-
-/* --- 7. FOOTER & FLOATERS --- */
-footer { background: var(--main-dark); color: var(--white); padding: 40px 20px; text-align: center; }
-.footer-contact a { color: var(--white); text-decoration: none; margin: 0 10px; font-size: 1.1rem; }
+/* --- WHATSAPP FLOTANTE --- */
 .whatsapp-float {
     position: fixed; bottom: 20px; right: 20px;
     background: var(--whatsapp-color); color: var(--white);
-    width: 60px; height: 60px; border-radius: 50%;
+    width: 55px; height: 55px; font-size: 28px; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-size: 30px; box-shadow: 0 4px 10px var(--shadow-strong);
-    z-index: 2000; transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 2000; transition: 0.3s;
 }
-.whatsapp-float:hover { transform: scale(1.1); }
+.whatsapp-float:hover { transform: scale(1.1); color: white; }
 
-/* --- RESPONSIVE PC --- */
+/* --- RESPONSIVE --- */
 @media (min-width: 768px) {
-    .models-grid { grid-template-columns: repeat(3, 1fr); }
     .hero-phrase { font-size: 3rem; }
+    .footer-content { flex-direction: row; justify-content: space-between; max-width: 1000px; margin: 0 auto; }
 }
