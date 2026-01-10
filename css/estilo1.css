@@ -139,6 +139,8 @@ footer {
 
 /* --- 4. MODELOS & GRID --- */
 .section-padding { padding: 80px 20px; text-align: center; background: var(--white); }
+#titulo-precios {color: var(--white); padding-top: 2rem;}
+.section-header h2 {text-align: center; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);}
 .section-header p { margin-bottom: 30px; color: var(--text-light); }
 
 .category-tabs { margin-bottom: 40px; }
@@ -180,6 +182,24 @@ iframe { width: 100%; height: 100%; border: none; background: #fff; }
 .btn-plan.active, .btn-plan:hover { background: var(--main); color: var(--white); }
 
 /* --- 6. PRECIOS --- */
+.precio-box {
+    margin: 15px 0;
+    line-height: 1.1; /* Reduce espacio entre renglones */
+}
+.precio-tachado {
+    display: block;
+    text-decoration: line-through;
+    color: #999; /* Gris claro para que no robe atención */
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 2px; /* Pegado al precio final */
+}
+.precio-final {
+    font-size: 2.2rem; /* Un poco más grande */
+    font-weight: 800;
+    display: block;
+    color: var(--main);
+}
 .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 1100px; margin: 40px auto; }
 .price-card { border: 1px solid #eee; border-radius: 15px; padding: 30px; background: var(--white); transition: 0.3s; position: relative; }
 .price-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); border-color: var(--accent); }
@@ -195,7 +215,9 @@ iframe { width: 100%; height: 100%; border: none; background: #fff; }
 .btn-consultar:hover { background: var(--accent); color: var(--main-black); }
 
 .precio-final { font-size: 2rem; font-weight: 800; display: block; margin: 15px 0; color: var(--main); }
-.price-card.personalized .precio-final.custom-price { font-size: 1.6rem; }
+.price-card.personalized .precio-final.custom-price { font-size: 1.6rem;
+    margin-top: 20px;
+}
 .price-card ul li { margin-bottom: 10px; color: var(--text-light); text-align: left; }
 .price-card ul li::before { content: "✓"; color: var(--accent); margin-right: 5px; font-weight: bold; }
 
