@@ -29,12 +29,12 @@ body {
     background-color: var(--main-dorado);
     color: var(--white);
     text-align: center;
-    padding: 8px 20px 10px 20px;
-    font-size: 0.85rem;
+    padding: 20px;
+    font-size: 1.2rem;
     font-weight: 500;
 }
-.top-banner p {margin-bottom: 0.4rem;}
-.top-banner a { color: var(--white); background-color: var(--main-dark); border-radius: 5px; padding: 0.3rem 0.8rem; font-weight: 700;}
+.top-banner p {margin-bottom: 0.8rem; font-size: 1.4rem;}
+.top-banner a { color: var(--white);  background-color: var(--main-dark); border-radius: 5px; padding: 0.3rem; font-weight: 800;}
 .top-banner a:hover { text-decoration: underline; }
 
 /* --- SECCIÓN 2: HERO (PORTADA PRINCIPAL) --- */
@@ -52,7 +52,7 @@ body {
     background-position: center top;
 
     /* Espaciado base para Celular */
-    padding: 60px 20px 160px 20px;
+    padding: 50px 20px 180px 20px;
     min-height: 90vh;
     
     text-align: center; 
@@ -173,7 +173,7 @@ iframe { width: 100%; height: 100%; border: none; background: #fff; }
 .price-card.personalized h3, .price-card.personalized .precio-final { color: var(--white); }
 .price-card.personalized li { color: rgba(255,255,255,0.9); }
 .price-card.personalized li::before { content: "💎"; margin-right: 5px; color: var(--white); }
-.btn-consultar { display: inline-block; margin-top: 15px; background: var(--white); color: var(--main); padding: 10px 20px; margin-left: 100px; border-radius: 20px; font-weight: bold; transition: 0.3s; }
+.btn-consultar { display: inline-block; margin-top: 15px; background: var(--white); color: var(--main); padding: 10px 20px; border-radius: 20px; font-weight: bold; transition: 0.3s; }
 .btn-consultar:hover { background: var(--main-dark); color: var(--white); }
 
 .price-card.personalized .precio-final.custom-price { font-size: 1.6rem; margin-top: 20px; }
@@ -183,8 +183,8 @@ iframe { width: 100%; height: 100%; border: none; background: #fff; }
 /* --- SECCIÓN 7: ENTREGAS Y FOOTER --- */
 .delivery-section { padding: 40px 20px; background: var(--accent-light); text-align: center; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
 .delivery-box { background: var(--white); padding: 20px; border-radius: 10px; width: 300px; box-shadow: var(--shadow); }
-.delivery-box.flash { border: 2px solid #ef4444; }
-.delivery-box.flash h4 { color: #ef4444; }
+.delivery-box.flash { border: 2px solid var(--main-dorado); }
+.delivery-box.flash h4 { color: var(--main-dorado); }
 
 footer { 
     background-color: var(--main-dark); 
