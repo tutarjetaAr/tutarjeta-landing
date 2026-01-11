@@ -13,7 +13,7 @@
 
 /* --- RESET Y ESTILOS BASE --- */
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
-.section-header h2 {letter-spacing: 2; font-family: 'Syne', sans-serif; font-weight: 800;}
+.section-header h2 {letter-spacing: 2; font-family: 'Syne', sans-serif !important; font-weight: 800 !important;}
 ul { list-style: none; }
 a { text-decoration: none; }
 img { max-width: 100%; display: block; }
@@ -29,10 +29,11 @@ body {
     background-color: var(--main-dorado);
     color: var(--white);
     text-align: center;
-    padding: 12px 20px;
+    padding: 8px 20px 10px 20px;
     font-size: 0.85rem;
     font-weight: 500;
 }
+.top-banner p {max-width: 700px;}
 .top-banner a { color: var(--white); background-color: var(--main-dark); border-radius: 5px; padding: 0.2rem; font-weight: 700; line-height: 1.5;}
 .top-banner a:hover { text-decoration: underline; }
 
@@ -132,6 +133,8 @@ body {
 .btn-text { background: none; border: none; color: var(--white); font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 5px; }
 
 /* --- SECCIÓN 5: DEMO EN VIVO --- */
+#demo-title {color: var(--main-dark); margin-bottom: 0.3rem;}
+.demo-header-info p {color: var(--text-light); margin-bottom: 0.5rem;}
 .demo-section { background: var(--accent-light); padding: 60px 20px; text-align: center; }
 .phone-mockup {
     width: 300px; /* Ajustado para pantallas pequeñas */
@@ -158,19 +161,20 @@ iframe { width: 100%; height: 100%; border: none; background: #fff; }
 .precio-final {
     font-size: 2rem; font-weight: 800; display: block; margin: 15px 0; color: var(--main);
 }
-.pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 1100px; margin: 40px auto; }
+.pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 1100px; margin: 40px 20px; }
 .price-card { border: 1px solid #eee; border-radius: 15px; padding: 25px; /* Padding reducido móvil */ background: var(--white); transition: 0.3s; position: relative; }
 .price-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); border-color: var(--main-dark); }
 .price-card.popular { border: 5px solid var(--main-dorado); background: #fafafa; }
 .etiqueta-pop { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--main-dorado); color: var(--white); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
+.precio-popular { color: var(--main-dorado) !important;}
 
 /* Tarjeta Personalizada */
-.price-card.personalized { background: var(--main); color: var(--white); border: none; }
+.price-card.personalized { background: var(--main); color: var(--white); border: 2px solid var(--white)}
 .price-card.personalized h3, .price-card.personalized .precio-final { color: var(--white); }
 .price-card.personalized li { color: rgba(255,255,255,0.9); }
 .price-card.personalized li::before { content: "💎"; margin-right: 5px; color: var(--white); }
-.btn-consultar { display: inline-block; margin-top: 15px; background: var(--white); color: var(--main); padding: 10px 20px; border-radius: 20px; font-weight: bold; transition: 0.3s; }
-.btn-consultar:hover { background: var(--main-dark); color: var(--main-dorado); }
+.btn-consultar { display: inline-block; margin-top: 15px; background: var(--white); color: var(--main); padding: 10px 20px; margin-left: 100px; border-radius: 20px; font-weight: bold; transition: 0.3s; }
+.btn-consultar:hover { background: var(--main-dark); color: var(--white); }
 
 .price-card.personalized .precio-final.custom-price { font-size: 1.6rem; margin-top: 20px; }
 .price-card ul li { margin-bottom: 10px; color: var(--text-light); text-align: left; }
@@ -190,10 +194,10 @@ footer {
     padding: 40px 20px; 
 }
 .footer-content { display: flex; flex-direction: column; align-items: center; gap: 20px; }
-.footer-logo { height: 40px; filter: brightness(100); }
+.footer-brand p {font-family: 'Syne', sans-serif; font-weight: 500; font-size: 1rem;}
 .footer-social { display: flex; gap: 15px; }
-.btn-social { color: var(--white); border: 1px solid rgba(255,255,255,0.3); padding: 8px 15px; border-radius: 20px; display: flex; align-items: center; gap: 8px; transition: 0.3s; }
-.btn-social:hover { background: var(--white); color: var(--main); }
+.btn-social { color: var(--main); background-color: var(--accent-light); border: 1px solid rgba(0,0,0,0.3); padding: 8px 15px; border-radius: 20px; display: flex; align-items: center; gap: 8px; transition: 0.3s; }
+.btn-social:hover { background: var(--main); color: var(--white); }
 
 /* --- ELEMENTOS FLOTANTES --- */
 .whatsapp-float {
