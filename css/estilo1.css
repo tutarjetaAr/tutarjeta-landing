@@ -1,9 +1,8 @@
 /* --- VARIABLES GLOBALES --- */
 :root {
-    --main: #6a6682;          /* Violeta Principal */
+    --main: #6a6682;              /* Violeta Principal */
     --main-dark: #555169;
-    --main-black: #222222;    /* Para Top Banner */
-    --accent: #2DD4BF;        /* Turquesa */
+    --main-dorado: #C8A165;       /* Dorado de acento */
     --accent-light: #F0FDFA;
     --white: #ffffff;
     --text-dark: #333333;
@@ -12,9 +11,9 @@
     --whatsapp-color: #25D366;
 }
 
-/* RESET */
+/* --- RESET Y ESTILOS BASE --- */
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
-h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif;}
+.section-header h2 {letter-spacing: 2; font-family: 'Syne', sans-serif; font-weight: 800;}
 ul { list-style: none; }
 a { text-decoration: none; }
 img { max-width: 100%; display: block; }
@@ -25,108 +24,69 @@ body {
     background-image: url("https://www.transparenttextures.com/patterns/60-lines.png") !important;
 }
 
-/* --- 1. TOP BANNER --- */
+/* --- SECCIÓN 1: BARRA SUPERIOR (TOP BANNER) --- */
 .top-banner {
-    background-color: var(--main-black);
+    background-color: var(--main-dorado);
     color: var(--white);
     text-align: center;
     padding: 12px 20px;
     font-size: 0.85rem;
     font-weight: 500;
 }
-.top-banner a { color: var(--accent); font-weight: 700; }
+.top-banner a { color: var(--white); background-color: var(--main-dark); border-radius: 5px; padding: 0.2rem; font-weight: 700; line-height: 1.5;}
 .top-banner a:hover { text-decoration: underline; }
 
-/* --- 2. HERO INTRO (FONDO MEJORADO) --- */
-/* CLASE UTILITARIA PARA FONDO VIOLETA CON TEXTURA */
-/* Úsala en el Hero, Footer o cualquier sección oscura */
-.bg-textured {
-    background-color: var(--main); /* 1. Color base violeta */
-    
-    /* 2. Capas de imagen (El navegador las apila: la primera es la de más arriba) */
-    background-image: 
-        /* Capa Superior: Gradiente que va de TRANSPARENTE a BLANCO al final (el desvanecimiento) */
-        linear-gradient(to bottom, rgba(255,255,255,0) 70%, var(--white) 100%),
-        
-        /* Capa Inferior: La textura */
-        url('../img/textura.png'); /* <--- ASEGURATE QUE ESTA RUTA SEA CORRECTA */
-
-    /* 3. Mezcla: Esto hace que la textura se "fusione" con el color violeta de fondo */
-    background-blend-mode: normal, overlay; 
-    
-    background-size: cover;
-    background-position: center;
-}
-
-/* --- HERO INTRO CORREGIDO --- */
+/* --- SECCIÓN 2: HERO (PORTADA PRINCIPAL) --- */
 .hero-intro {
-    /* 1. COLOR BASE (El violeta) */
     background-color: var(--main) !important;
-
-    /* 2. IMÁGENES DE FONDO (El orden es CLAVE: la primera va ARRIBA de todo) */
+    
+    /* Configuración de Fondo (Degradado + Textura) */
     background-image: 
-        /* CAPA SUPERIOR: El degradado que se funde a blanco al final */
-        linear-gradient(to bottom, rgba(255,255,255,0) 50%, var(--white) 100%),
-        
-        /* CAPA INFERIOR: La textura (Pon aquí la URL que te funcionó en el body) */
-        url('../img/textura.png') !important; 
+        linear-gradient(to bottom, rgba(255,255,255,0) 80%, var(--white) 100%),
+        url('../img/textura.png') !important;
 
-    /* 3. MODOS DE MEZCLA */
-    /* 'normal' para el degradado (para que tape lo de abajo al final) */
-    /* 'soft-light' u 'overlay' para que la textura se mezcle con el violeta */
     background-blend-mode: normal, soft-light;
-
-    /* 4. TAMAÑO Y REPETICIÓN */
-    /* El degradado cubre todo, la textura se repite como patrón */
     background-size: cover, auto;
     background-repeat: no-repeat, repeat;
     background-position: center top;
 
-    /* 5. ESPACIADO (Para dar lugar al difuminado abajo) */
-    padding: 20px 20px 400px 20px; 
-    
-    /* Configuración Flex (Centrado) */
+    /* Espaciado base para Celular */
+    padding: 60px 20px 160px 20px;
     min-height: 90vh;
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center;
+    
     text-align: center; 
     color: var(--white);
-    position: relative; /* Por seguridad */
 }
 
-/* RESPONSIVE PARA PC */
-@media (min-width: 768px) {
-    .hero-intro {
-        /* En PC el difuminado puede ser más largo */
-        background-image: 
-            linear-gradient(to bottom, rgba(255,255,255,0) 40%, var(--white) 100%),
-            url('../img/textura.png') !important;
-        padding-bottom: 450px; 
-    }
+.hero-logo { 
+    width: 280px;
+    margin: 0 auto; 
 }
 
-/* APLICAMOS TAMBIÉN AL FOOTER (Opcional si quieres textura ahí) */
-footer {
-    background-color: var(--main-dark);
-    background-image: url('../img/textura.png') !important;
-     background-blend-mode: overlay; 
-    color: var(--white); 
-    padding: 40px 20px; 
+.hero-phrase { 
+    font-family: 'Syne', sans-serif; font-weight: 800;
+    font-weight: 400 !important;
+    font-size: 1.2rem; /* Tamaño legible en celular */
+    letter-spacing: 1.5px;
+    margin: 0 20px 35px 20px; 
+    line-height: 1.5; 
+    text-shadow: 0 2px 10px rgba(0,0,0,0.2); 
+    padding: 0 10px;
 }
 
-.hero-logo { width: 180px; margin: 0 auto 20px auto; animation: flotar 3s infinite ease-in-out; }
-.hero-phrase { font-size: 1.8rem; margin-bottom: 30px; text-shadow: 0 2px 10px rgba(0,0,0,0.2); }
 .btn-hero { 
-    background: var(--accent); color: var(--text-dark); padding: 15px 35px; 
-    border-radius: 50px; font-weight: bold; box-shadow: var(--shadow); transition: 0.3s; 
+    font-family: 'Syne', sans-serif; font-weight: 800;
+    background: var(--main-dorado); 
+    color: var(--white); 
+    padding: 12px 30px; 
+    border-radius: 50px; 
+    font-weight: bold; 
+    box-shadow: var(--shadow); 
+    transition: 0.3s; 
 }
-.btn-hero:hover { background: var(--white); transform: scale(1.05); }
+.btn-hero:hover { background: var(--white); transform: scale(1.05); color: var(--main-dorado);}
 
-@keyframes flotar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-
-/* --- 3. NAV STICKY --- */
+/* --- SECCIÓN 3: NAVEGACIÓN (STICKY NAV) --- */
 .sticky-nav {
     position: fixed; top: -80px; left: 0; width: 100%;
     background: var(--main); box-shadow: var(--shadow);
@@ -137,16 +97,19 @@ footer {
 .nav-list a { color: var(--white); font-weight: 600; }
 .nav-logo { height: 35px; }
 
-/* --- 4. MODELOS & GRID --- */
-.section-padding { padding: 80px 20px; text-align: center; background: var(--white); }
+/* --- SECCIÓN 4: MODELOS Y GRID --- */
+.titulo-oscuro {color: var(--main-dark); margin-bottom: 0.5rem;}
+.section-padding { padding: 60px 20px; text-align: center; background: var(--white); } /* Padding reducido móvil */
 #titulo-precios {color: var(--white); padding-top: 2rem;}
-.section-header h2 {text-align: center; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);}
+
+.section-header h2 { text-align: center; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); }
 .section-header p { margin-bottom: 30px; color: var(--text-light); }
 
 .category-tabs { margin-bottom: 40px; }
 .category-tabs button {
     background: transparent; border: 1px solid var(--main); color: var(--main);
-    padding: 8px 20px; border-radius: 20px; margin: 0 5px; cursor: pointer; transition: 0.3s;
+    padding: 8px 20px; border-radius: 20px; margin: 0 5px 10px 5px; /* Margen abajo para saltos de línea */
+    cursor: pointer; transition: 0.3s;
 }
 .category-tabs button:hover, .category-tabs button.active { background: var(--main); color: var(--white); }
 
@@ -166,12 +129,14 @@ footer {
 .model-card.inactive { cursor: default; opacity: 0.7; }
 
 .model-info { padding: 15px; background: rgba(0,0,0,0.85); position: absolute; bottom: 0; width: 100%; color: white; display: flex; justify-content: space-between; align-items: center; }
-.btn-text { background: none; border: none; color: var(--accent); font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 5px; }
+.btn-text { background: none; border: none; color: var(--white); font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 5px; }
 
-/* --- 5. DEMO VIVO --- */
+/* --- SECCIÓN 5: DEMO EN VIVO --- */
 .demo-section { background: var(--accent-light); padding: 60px 20px; text-align: center; }
 .phone-mockup {
-    width: 320px; height: 650px; background: #111; border-radius: 40px;
+    width: 300px; /* Ajustado para pantallas pequeñas */
+    height: 600px; 
+    background: #111; border-radius: 30px;
     margin: 30px auto; border: 8px solid #333; overflow: hidden; position: relative;
     box-shadow: 0 20px 60px rgba(0,0,0,0.4);
 }
@@ -181,30 +146,23 @@ iframe { width: 100%; height: 100%; border: none; background: #fff; }
 .btn-plan { border: 1px solid var(--main); background: transparent; color: var(--main); padding: 8px 20px; border-radius: 20px; cursor: pointer; transition: 0.3s; }
 .btn-plan.active, .btn-plan:hover { background: var(--main); color: var(--white); }
 
-/* --- 6. PRECIOS --- */
+/* --- SECCIÓN 6: LISTA DE PRECIOS --- */
 .precio-box {
     margin: 15px 0;
-    line-height: 1.1; /* Reduce espacio entre renglones */
+    line-height: 1.1; 
 }
 .precio-tachado {
-    display: block;
-    text-decoration: line-through;
-    color: #999; /* Gris claro para que no robe atención */
-    font-size: 1rem;
-    font-weight: 500;
-    margin-bottom: 2px; /* Pegado al precio final */
+    display: block; text-decoration: line-through;
+    color: #999; font-size: 1rem; font-weight: 500; margin-bottom: 2px;
 }
 .precio-final {
-    font-size: 2.2rem; /* Un poco más grande */
-    font-weight: 800;
-    display: block;
-    color: var(--main);
+    font-size: 2rem; font-weight: 800; display: block; margin: 15px 0; color: var(--main);
 }
 .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 1100px; margin: 40px auto; }
-.price-card { border: 1px solid #eee; border-radius: 15px; padding: 30px; background: var(--white); transition: 0.3s; position: relative; }
-.price-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); border-color: var(--accent); }
-.price-card.popular { border: 2px solid var(--accent); background: #fafafa; }
-.etiqueta-pop { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--accent); color: var(--main-black); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
+.price-card { border: 1px solid #eee; border-radius: 15px; padding: 25px; /* Padding reducido móvil */ background: var(--white); transition: 0.3s; position: relative; }
+.price-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); border-color: var(--main-dark); }
+.price-card.popular { border: 5px solid var(--main-dorado); background: #fafafa; }
+.etiqueta-pop { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--main-dorado); color: var(--white); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
 
 /* Tarjeta Personalizada */
 .price-card.personalized { background: var(--main); color: var(--white); border: none; }
@@ -212,29 +170,32 @@ iframe { width: 100%; height: 100%; border: none; background: #fff; }
 .price-card.personalized li { color: rgba(255,255,255,0.9); }
 .price-card.personalized li::before { content: "💎"; margin-right: 5px; color: var(--white); }
 .btn-consultar { display: inline-block; margin-top: 15px; background: var(--white); color: var(--main); padding: 10px 20px; border-radius: 20px; font-weight: bold; transition: 0.3s; }
-.btn-consultar:hover { background: var(--accent); color: var(--main-black); }
+.btn-consultar:hover { background: var(--main-dark); color: var(--main-dorado); }
 
-.precio-final { font-size: 2rem; font-weight: 800; display: block; margin: 15px 0; color: var(--main); }
-.price-card.personalized .precio-final.custom-price { font-size: 1.6rem;
-    margin-top: 20px;
-}
+.price-card.personalized .precio-final.custom-price { font-size: 1.6rem; margin-top: 20px; }
 .price-card ul li { margin-bottom: 10px; color: var(--text-light); text-align: left; }
-.price-card ul li::before { content: "✓"; color: var(--accent); margin-right: 5px; font-weight: bold; }
+.price-card ul li::before { content: "✓"; color: var(--main-dark); margin-right: 5px; font-weight: bold; }
 
-/* --- 7. ENTREGAS & FOOTER --- */
+/* --- SECCIÓN 7: ENTREGAS Y FOOTER --- */
 .delivery-section { padding: 40px 20px; background: var(--accent-light); text-align: center; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
 .delivery-box { background: var(--white); padding: 20px; border-radius: 10px; width: 300px; box-shadow: var(--shadow); }
 .delivery-box.flash { border: 2px solid #ef4444; }
 .delivery-box.flash h4 { color: #ef4444; }
 
-footer { background: var(--main-dark); color: var(--white); padding: 40px 20px; }
+footer { 
+    background-color: var(--main-dark); 
+    background-image: url('../img/textura.png') !important;
+    background-blend-mode: overlay; 
+    color: var(--white); 
+    padding: 40px 20px; 
+}
 .footer-content { display: flex; flex-direction: column; align-items: center; gap: 20px; }
 .footer-logo { height: 40px; filter: brightness(100); }
 .footer-social { display: flex; gap: 15px; }
 .btn-social { color: var(--white); border: 1px solid rgba(255,255,255,0.3); padding: 8px 15px; border-radius: 20px; display: flex; align-items: center; gap: 8px; transition: 0.3s; }
 .btn-social:hover { background: var(--white); color: var(--main); }
 
-/* --- WHATSAPP FLOTANTE --- */
+/* --- ELEMENTOS FLOTANTES --- */
 .whatsapp-float {
     position: fixed; bottom: 20px; right: 20px;
     background: var(--whatsapp-color); color: var(--white);
@@ -244,8 +205,27 @@ footer { background: var(--main-dark); color: var(--white); padding: 40px 20px; 
 }
 .whatsapp-float:hover { transform: scale(1.1); color: white; }
 
-/* --- RESPONSIVE --- */
+/* ==========================================================================
+   MEDIA QUERY: AJUSTES PARA PC / ESCRITORIO (min-width: 768px)
+   Aquí van los aumentos de tamaño que solo se aplican en pantallas grandes
+   ========================================================================== 
+*/
 @media (min-width: 768px) {
-    .hero-phrase { font-size: 3rem; }
+    /* Hero: Aumenta padding para el efecto de transición largo */
+    .hero-intro { padding-bottom: 300px; }
+    
+    /* Logo: Más grande en PC */
+    .hero-logo { width: 400px; }
+    
+    /* Frase: Mucho más grande en PC */
+    .hero-phrase { font-size: 3rem; margin-bottom: 3rem ; max-width: 1100px; margin-left: auto; margin-right: auto;}
+    
+    /* Footer: Distribución horizontal */
     .footer-content { flex-direction: row; justify-content: space-between; max-width: 1000px; margin: 0 auto; }
+    
+    /* Mockup: Tamaño completo */
+    .phone-mockup { width: 320px; height: 650px; }
+    
+    /* Padding general */
+    .section-padding { padding: 80px 20px; }
 }
