@@ -52,13 +52,27 @@ function enviarMensajeIframe(plan) {
     const iframe = document.getElementById('iframe-demo');
     
     // Cambiar estilo botones landing
-    const botones = document.querySelectorAll('.btn-plan');
-    botones.forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
+    // Nota: Agregamos una validación por si 'event' no está definido al llamarlo directo
+    if (typeof event !== 'undefined' && event.target) {
+        const botones = document.querySelectorAll('.btn-plan');
+        botones.forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+    }
 
-    // Enviar mensaje al sitio dentro del Iframe
-    // Esto activa el listener que pusiste en el proyecto de Mellis
+    // PREPARAMOS LOS DATOS
+    const datosMensaje = { 
+        tipo: 'cambioPlan', 
+        plan: plan 
+    };
+
+    // SI ES PREMIUM, AGREGAMOS LA PERSONALIZACIÓN "FAKE"
+    if (plan === 'premium') {
+        datosMensaje.invitado = "Familia Invitada"; // El nombre que quieras mostrar
+        datosMensaje.pases = "2"; 
+    }
+
+    // ENVIAR
     if (iframe.contentWindow) {
-        iframe.contentWindow.postMessage({ tipo: 'cambioPlan', plan: plan }, '*');
+        iframe.contentWindow.postMessage(datosMensaje, '*');
     }
 }

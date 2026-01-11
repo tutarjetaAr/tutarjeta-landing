@@ -35,7 +35,7 @@ body {
     font-weight: 500;
 }
 .top-banner p {margin-bottom: 0.8rem; font-size: 1.2rem;}
-.top-banner a { color: var(--white);  background-color: var(--main-dark); border-radius: 5px; padding: 0.3rem; font-weight: 800;}
+.top-banner a { color: var(--white);  background-color: var(--main-dark); border-radius: 5px; padding: 0.3rem; font-weight: 800; }
 .top-banner a:hover { text-decoration: underline; }
 
 /* --- SECCIÓN 2: HERO (PORTADA PRINCIPAL) --- */
@@ -145,7 +145,25 @@ body {
     box-shadow: 0 20px 60px rgba(0,0,0,0.4);
 }
 iframe { width: 100%; height: 100%; border: none; background: #fff; }
-
+.demo-warning {
+    max-width: 400px; /* Que no sea más ancho que el celular */
+    margin: 30px auto 0 auto; /* Centrado y separado del celular */
+    background-color: #fff3cd; /* Fondo amarillito suave */
+    border: 1px solid #ffeeba;
+    color: #856404; /* Texto marrón dorado oscuro */
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    line-height: 1.4;
+    text-align: left;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.demo-warning i {
+    font-size: 1.2rem;
+}
 .plan-controls { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
 .btn-plan { border: 1px solid var(--main); background: transparent; color: var(--main); padding: 8px 20px; border-radius: 20px; cursor: pointer; transition: 0.3s; }
 .btn-plan.active, .btn-plan:hover { background: var(--main); color: var(--white); }
