@@ -21,7 +21,7 @@ img { max-width: 100%; display: block; }
 html { scroll-behavior: smooth; }
 
 /* COLORES DE FONDO SECCIONES */
-body, .sticky-nav, .hero-intro {
+.sticky-nav, .hero-intro {
     background-color: var(--main) !important;
     background-image: 
         radial-gradient(circle at center, #6a668200 0%, var(--main) 90%),
@@ -29,7 +29,7 @@ body, .sticky-nav, .hero-intro {
     background-blend-mode: multiply;
     background-size: cover;
 }
-footer {
+body, footer {
     background-color: var(--main-dark) !important; 
     background-image: url('../img/textura.png') !important;
     background-blend-mode: overlay;
