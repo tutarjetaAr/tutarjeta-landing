@@ -28,19 +28,19 @@ body {
 .hero-intro {
     background-color: var(--main) !important;
     
-    /* Configuración de Fondo (Degradado + Textura) */
     background-image: 
-        linear-gradient(to bottom, rgba(255,255,255,0) 80%, var(--white) 100%),
+        /* 1. Vignette: Transparente en el centro, color sólido en los bordes */
+        radial-gradient(circle at center, rgba(106, 102, 130, 0) 0%, var(--main) 90%),
+        
+        /* 2. Textura de fondo */
         url('../img/textura.png') !important;
 
-    background-blend-mode: normal, soft-light;
-    background-size: cover, auto;
-    background-repeat: no-repeat, repeat;
-    background-position: center top;
+    background-blend-mode: multiply;
+    background-size: cover;
 
     /* Espaciado base para Celular */
-    padding: 50px 20px 180px 20px;
-    min-height: 90vh;
+    padding: 50px 20px;
+    min-height: 70vh;
     
     text-align: center; 
     color: var(--white);
@@ -64,16 +64,17 @@ body {
 .hero-phrase em { font-family: 'Syne', sans-serif !important; font-weight: 700 !important; font-size: 1.2rem;}
 
 .btn-hero { 
+    margin-top: 2rem;
     font-family: 'Syne', sans-serif; font-weight: 800;
-    background: var(--main-dorado); 
-    color: var(--white); 
+    background: var(--white); 
+    color: var(--main-dark); 
     padding: 12px 30px; 
     border-radius: 50px; 
     font-weight: bold; 
     box-shadow: var(--shadow); 
     transition: 0.3s; 
 }
-.btn-hero:hover { background: var(--white); transform: scale(1.05); color: var(--main-dorado);}
+.btn-hero:hover { background: var(--main); transform: scale(1.05); color: var(--white);}
 
 /* --- SECCIÓN 3: NAVEGACIÓN (STICKY NAV) --- */
 .sticky-nav {
@@ -247,7 +248,7 @@ footer {
 @media (min-width: 768px) {
 
     /* Hero: Aumenta padding para el efecto de transición largo */
-    .hero-intro { padding-bottom: 300px; }
+    .hero-intro { padding-bottom: 150px; }
     
     /* Logo: Más grande en PC */
     .hero-logo { width: 400px; }
@@ -256,6 +257,8 @@ footer {
     .hero-phrase { font-size: 2.5rem; margin-bottom: 3rem ; max-width: 1100px; margin-left: auto; margin-right: auto;}
 
     .hero-phrase em { font-family: 'Syne', sans-serif !important; font-weight: 700 !important; font-size: 3rem;}
+
+    .pricing-grid { max-width: 1200px; gap: 5px;     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));}
 
     /* Footer: Distribución horizontal */
     .footer-content { flex-direction: row; justify-content: space-between; max-width: 1000px; margin: 0 auto; }
